@@ -1,2 +1,5 @@
-def main():
-    print("Executing entry point dundie...")
+from .cli import main
+
+
+if __name__ == "__main__":
+    main()
