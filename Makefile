@@ -12,10 +12,11 @@ ipython:
 	@.venv/bin/ipython
 
 test:
-	@.venv/bin/pytest -vv -s tests/
+	@.venv/bin/pytest -s
 
 watch:
-	@.venv/bin/ptw -- -vv -s tests/
+	# @.venv/bin/ptw -- -s
+	@ls **/*.py | entr pytest
 
 clean:
 	@find ./ -name '*.pyc' -exec rm -f {} \;

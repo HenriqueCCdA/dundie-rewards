@@ -1,6 +1,10 @@
+import pytest
 from dundie.core import load
 from .constantes import PEOPLE_FILE
 
+
+@pytest.mark.unit
+@pytest.mark.high
 def test_load():
     """Test load function"""
 
