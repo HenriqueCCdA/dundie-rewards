@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.284" timestamp="2023-01-10T16:45:27.304348" hostname="henrique-PC"><testcase classname="tests.test_load" name="test_load_positive_has_2_people" time="0.002"><failure message="AssertionError: assert 3 == 2&#10; +  where 3 = len(['Jim Halpert,Sales,Salesman,lim@dundlermifflin.com', 'Dwight Schrute,Sales,Manager,schrute@dundlermifflin.com', 'Gabe Lewis, Directory, Manager,glewis@dundlermifflin.com'])">request = &lt;FixtureRequest for &lt;Function test_load_positive_has_2_people&gt;&gt;
+
+    @pytest.mark.unit
+    @pytest.mark.high
+    def test_load_positive_has_2_people(request):
+        """Test load function"""
+    
+        result = load(PEOPLE_FILE)
+    
+&gt;       assert len(result) == 2
+E       AssertionError: assert 3 == 2
+E        +  where 3 = len(['Jim Halpert,Sales,Salesman,lim@dundlermifflin.com', 'Dwight Schrute,Sales,Manager,schrute@dundlermifflin.com', 'Gabe Lewis, Directory, Manager,glewis@dundlermifflin.com'])
+
+tests/test_load.py:13: AssertionError</failure></testcase><testcase classname="tests.test_load" name="test_load_positive_first_name_starts_with_j" time="0.001" /><testcase classname="integration.test_load" name="test_load" time="0.161" /></testsuite></testsuites>
