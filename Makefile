@@ -1,15 +1,21 @@
-.PHONY: install virtualenv python clean test
+.PHONY: install virtualenv python clean test pflake8
 
 install:
 	@echo "Installing for dev environment"
 	@.venv/bin/python -m pip install -e '.[dev]'
-
 
 virtualenv:
 	@python -m pip -m venv .venv --upgrade-deps
 
 ipython:
 	@.venv/bin/ipython
+
+lint:
+	@.venv/bin/pflake8
+
+fmt:
+	@.venv/bin/isort dundie integration tests
+	@.venv/bin/black dundie integration tests
 
 test:
 	@.venv/bin/pytest -s
