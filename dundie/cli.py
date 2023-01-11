@@ -1,6 +1,6 @@
 import argparse
 
-from dundie.core import load # noqa
+from dundie.core import load  # noqa
 
 
 def main():
@@ -14,7 +14,11 @@ def main():
         "subcommand",
         type=str,
         help="The subcommand to run",
-        choices=("load", "show", "send",),
+        choices=(
+            "load",
+            "show",
+            "send",
+        ),
         default="help",
     )
 
