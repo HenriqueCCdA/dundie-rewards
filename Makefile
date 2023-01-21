@@ -1,4 +1,4 @@
-.PHONY: install virtualenv python clean test pflake8
+.PHONY: install virtualenv ipython lint fmt test watch docs build publish-test clean
 
 install:
 	@echo "Installing for dev environment"
@@ -23,6 +23,16 @@ test:
 watch:
 	# @.venv/bin/ptw -- -s
 	@ls **/*.py | entr pytest --forked
+
+docs:
+	@mkdocs build --clean
+
+
+build:
+	@python setup.py sdist bdist_wheel
+
+publish-test:
+	@twine upload -- repository testpypi dist/*
 
 clean:
 	@find ./ -name '*.pyc' -exec rm -f {} \;
