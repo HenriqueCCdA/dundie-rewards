@@ -4,7 +4,7 @@ Summary of project
 
 ## Guidelines
 
-- Backwords compatibility
+- Backwards compatibility
 - Multiplatform
 - Python 3 only
 
@@ -18,32 +18,38 @@ Summary of project
 
 - Click fork button on [github repo](https://github.com/...)
 
-### Clone to local env environment
+### Clone to local dev environment
 
 ```bash
-git clone https://github.com/sueome/...
+git clone https://github.com/seunome/...
+...
 ```
 
-### Prepaare virtual env
+### Prepare virtual env
 
 ```bash
-de dundue-rewards
+de dundie-rewards
 make virtualenv
-make intall
+make install
 ```
+
+### Coding style
+
+- This project follows PEP8
 
 ### Run tests
 
 ```bash
 make test
 # or
-make wath
+make watch
 ```
 
 ### Commit rules
 
-- We follow convetional commit messages ex: `[bugfix] reason #issue`
+- We follow conventional commit messages ex: `[bugfix] reason #issue`
 - We require signed commits
+
 
 ### Pull Request Rules
 

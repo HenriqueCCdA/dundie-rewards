@@ -6,10 +6,12 @@
 pip install dundie
 ```
 
-## Install from <source/>
 
-```
-git clone https://github.com/henriqueCCdA/dundie-rewards
+## Install from source
+
+
+```bash
+git clone https://github.com/rochacbruno/dundie-rewards
 cd dundie-rewards
 make install
 ```

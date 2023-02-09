@@ -1,13 +1,13 @@
 import os
-
-from setuptools import find_packages, setup
+from setuptools import setup, find_packages
 
 
 def read(*paths):
-    """Read the conntents of a text file safely
-    >>> read("project_name", "VERSION")
+    """Read the contents of a text file safely.
+    >>> read("dundie", "VERSION")
     '0.1.0'
     >>> read("README.md")
+    ...
     """
     rootpath = os.path.dirname(__file__)
     filepath = os.path.join(rootpath, *paths)
@@ -19,20 +19,20 @@ def read_requirements(path):
     """Return a list of requirements from a text file"""
     return [
         line.strip()
-        for line in read(path).split('\n')
+        for line in read(path).split("\n")
         if not line.startswith(("#", "git+", '"', '-'))
     ]
 
 
 setup(
-    name="dundie-hcca",
+    name="dundie",
     # Major.Minor.Patch
     # X.Y.Z
-    version="0.1.0",
+    version="0.1.1",
     description="Reward Point System for Dunder Mifflin",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    author="Henrique de Andrade",
+    author="Bruno Rocha",
     python_requires=">=3.8",
     packages=find_packages(exclude=["integration"]),
     include_package_data=True,
@@ -46,5 +46,4 @@ setup(
         "test": read_requirements("requirements.test.txt"),
         "dev": read_requirements("requirements.dev.txt")
     }
-
 )

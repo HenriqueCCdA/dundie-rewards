@@ -1,3 +1,6 @@
-# Documentatio for dundie
+# Documentation for dundie
 
-This project offers `dundie` CLI to manage Dunder Mifflin Reward Points
+This project offers `dundie` CLI to manage
+Dunder Mifflin Reward Points.
+
+
