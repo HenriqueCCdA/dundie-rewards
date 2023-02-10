@@ -1,6 +1,8 @@
 from typing import Optional
+
 from sqlmodel import Session, select
-from dundie.models import Person, User, Balance, Movement
+
+from dundie.models import Balance, Movement, Person, User
 from dundie.settings import EMAIL_FROM
 from dundie.utils.email import send_email
 
@@ -21,10 +23,13 @@ def add_person(session: Session, instance: Person):
         set_initial_balance(session, instance)
         password = set_initial_password(session, instance)
         # TODO: Usar sistema de filas (conteudo extra)
-        send_email(EMAIL_FROM, instance.email, "Your dundie password", password)
+        send_email(
+            EMAIL_FROM, instance.email, "Your dundie password", password
+        )
     else:
         existing.dept = instance.dept
         existing.role = instance.role
+        existing.currency = instance.currency
         session.add(existing)
     return instance, created
 
@@ -58,9 +63,7 @@ def add_movement(
     movement = Movement(person=person, value=value, actor=actor)
     session.add(movement)
 
-    movements = session.exec(
-        select(Movement).where(Movement.person == person)
-    )
+    movements = session.exec(select(Movement).where(Movement.person == person))
 
     total = sum([mov.value for mov in movements])
 
