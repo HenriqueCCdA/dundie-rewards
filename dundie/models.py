@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Optional
 
-from sqlmodel import SQLModel, Field, Relationship
-from pydantic import validator, condecimal
+from pydantic import condecimal, validator
+from sqlmodel import Field, Relationship, SQLModel
 
 from dundie.utils.email import check_valid_email
 from dundie.utils.user import generate_simple_password
@@ -22,6 +22,7 @@ class Person(SQLModel, table=True):
     balance: "Balance" = Relationship(back_populates="person")
     movement: "Movement" = Relationship(back_populates="person")
     user: "User" = Relationship(back_populates="person")
+    currency: str = Field(default="USD", nullable=True)
 
     @validator("email")
     def validate_email(cls, v: str) -> str:

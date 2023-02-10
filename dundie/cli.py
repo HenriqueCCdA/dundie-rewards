@@ -1,11 +1,11 @@
 import json
 import warnings
-from sqlalchemy.exc import SAWarning
 
 import pkg_resources
 import rich_click as click
 from rich.console import Console
 from rich.table import Table
+from sqlalchemy.exc import SAWarning
 
 from dundie import core
 
@@ -17,9 +17,7 @@ click.rich_click.SHOW_METAVARS_COLUMN = False
 click.rich_click.APPEND_METAVARS_HELP = True
 
 
-warnings.filterwarnings(
-    'ignore', category=SAWarning
-)
+warnings.filterwarnings("ignore", category=SAWarning)
 
 
 @click.group()
@@ -47,7 +45,7 @@ def load(filepath):
     - Loads to database
     """
     table = Table(title="Dunder Mifflin Associates")
-    headers = ["e-mail", "name", "dept", "role", "created"]
+    headers = ["e-mail", "name", "dept", "role", "currency", "created"]
     for header in headers:
         table.add_column(header, style="magenta")
 
@@ -78,6 +76,8 @@ def show(output, **query):
         table.add_column(key.title().replace("_", " "), style="magenta")
 
     for person in result:
+        person["value"] = f"{person['value']:.2f}"
+        person["balance"] = f"{person['balance']:.2f}"
         table.add_row(*[str(value) for value in person.values()])
 
     console = Console()
